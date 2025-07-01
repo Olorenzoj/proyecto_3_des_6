@@ -1,5 +1,6 @@
 package com.example.project3.adapters
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +43,22 @@ class ProductoAdapter(
         // Como este es el listado general, ocultamos la cantidad
         holder.tvCantidad.visibility = View.GONE
 
-        holder.ivFotoProducto.setImageResource(R.drawable.ic_producto_default)
+        // Cargar foto del producto
+        if (!producto.fotoUri.isNullOrEmpty()) {
+            try {
+                val uri = Uri.parse(producto.fotoUri)
+                holder.ivFotoProducto.setImageURI(uri)
+                holder.ivFotoProducto.scaleType = ImageView.ScaleType.CENTER_CROP
+            } catch (e: Exception) {
+                // Si hay error al cargar la imagen, usar imagen por defecto
+                holder.ivFotoProducto.setImageResource(R.drawable.ic_producto_default)
+                holder.ivFotoProducto.scaleType = ImageView.ScaleType.CENTER_INSIDE
+            }
+        } else {
+            // Si no hay foto, usar imagen por defecto
+            holder.ivFotoProducto.setImageResource(R.drawable.ic_producto_default)
+            holder.ivFotoProducto.scaleType = ImageView.ScaleType.CENTER_INSIDE
+        }
     }
 
     override fun getItemCount() = productos.size

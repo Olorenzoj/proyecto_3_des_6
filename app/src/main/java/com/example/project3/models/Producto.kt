@@ -1,8 +1,8 @@
 package com.example.project3.models
 
 data class Producto(
-    val idProducto: Int,
+    val idProducto: Int = 0,
     val nombreProducto: String,
     val precio: Double,
-    val stock: Int = 0 // Campo adicional
+    val fotoUri: String? = null
 )

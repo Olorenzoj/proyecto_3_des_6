@@ -95,6 +95,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val values = ContentValues().apply {
             put("nombreProducto", producto.nombreProducto)
             put("precio", producto.precio)
+            put("fotoUri", producto.fotoUri)
         }
         return db.insert("Productos", null, values)
     }
@@ -108,7 +109,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val producto = Producto(
                     idProducto = getInt(getColumnIndexOrThrow("idProducto")),
                     nombreProducto = getString(getColumnIndexOrThrow("nombreProducto")),
-                    precio = getDouble(getColumnIndexOrThrow("precio"))
+                    precio = getDouble(getColumnIndexOrThrow("precio")),
+                    fotoUri = getString(getColumnIndexOrThrow("fotoUri"))
                 )
                 productos.add(producto)
             }
@@ -125,7 +127,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             Producto(
                 idProducto = cursor.getInt(cursor.getColumnIndexOrThrow("idProducto")),
                 nombreProducto = cursor.getString(cursor.getColumnIndexOrThrow("nombreProducto")),
-                precio = cursor.getDouble(cursor.getColumnIndexOrThrow("precio"))
+                precio = cursor.getDouble(cursor.getColumnIndexOrThrow("precio")),
+                fotoUri = cursor.getString(cursor.getColumnIndexOrThrow("fotoUri"))
             )
         } else {
             null
@@ -137,6 +140,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val values = ContentValues().apply {
             put("nombreProducto", producto.nombreProducto)
             put("precio", producto.precio)
+            put("fotoUri", producto.fotoUri)
         }
         return db.update(
             "Productos",
@@ -145,12 +149,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             arrayOf(producto.idProducto.toString())
         )
     }
-
-    fun deleteProducto(idProducto: Int): Int {
-        val db = writableDatabase
-        return db.delete("Productos", "idProducto = ?", arrayOf(idProducto.toString()))
-    }
-
     // ---------------- ORDENES ----------------
     fun insertOrden(orden: Orden): Long {
         val db = writableDatabase
