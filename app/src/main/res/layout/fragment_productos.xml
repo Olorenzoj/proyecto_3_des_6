@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ClientesActivity">
+    tools:context=".fragments.ProductosFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvClientes"
+        android:id="@+id/rvProductos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        tools:listitem="@layout/item_cliente" />
+        tools:listitem="@layout/item_producto" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAgregarCliente"
+        android:id="@+id/fabAgregarProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

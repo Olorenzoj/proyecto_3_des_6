@@ -1,60 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".activities.DetalleOrdenActivity">
 
-    <TextView
-        android:id="@+id/tvOrdenId"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvFecha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"/>
+        <!-- Sección de Datos Generales de la Orden -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
 
-    <TextView
-        android:id="@+id/tvCliente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textStyle="bold"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvEstado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"/>
+                <TextView
+                    android:id="@+id/tvOrdenId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Orden #123"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Productos:"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+                <TextView
+                    android:id="@+id/tvFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha: 2025-07-01"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDetalles"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"/>
+                <TextView
+                    android:id="@+id/tvCliente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cliente: Juan Pérez"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp" />
 
-    <TextView
-        android:id="@+id/tvTotal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Total: $0.00"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:gravity="end"
-        android:layout_marginTop="16dp"/>
+                <TextView
+                    android:id="@+id/tvEstado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Estado: Pendiente"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+        <!-- Lista de Productos -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Productos:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            android:padding="8dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDetalles"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                tools:listitem="@layout/item_producto" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Total -->
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: $0.00"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:layout_marginTop="16dp" />
+
+        <!-- NUEVO: Botones de acción -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/btnEditarOrden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar"
+                android:layout_marginEnd="16dp"/>
+
+            <Button
+                android:id="@+id/btnVolver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Volver"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

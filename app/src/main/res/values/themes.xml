@@ -1,5 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <style name="Theme.Project3" parent="android:Theme.Material.Light.NoActionBar" />
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Project3" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- Color general de la status bar -->
+        <item name="android:statusBarColor">#BB86FC</item>  <!-- Color pastel -->
+        <!-- Esto asegura que los íconos sean claros -->
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
 </resources>

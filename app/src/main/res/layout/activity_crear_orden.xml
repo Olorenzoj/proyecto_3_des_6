@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,70 +11,88 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Selección de Cliente -->
-        <TextView
+        <!-- Bloque Cliente + Fecha + Agregar Productos -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cliente"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
 
-        <Spinner
-            android:id="@+id/spinnerClientes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"/>
-
-        <!-- Fecha -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fecha"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/tvFecha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Fecha actual"/>
-
-        <!-- Agregar Productos -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Agregar Productos"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/spinnerProductos"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:layout_marginEnd="8dp"/>
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/etCantidad"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Cant"
-                android:inputType="number"/>
+                <!-- Cliente -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cliente"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
 
-            <Button
-                android:id="@+id/btnAgregarProducto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+"/>
+                <Spinner
+                    android:id="@+id/spinnerClientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp" />
 
-        </LinearLayout>
+                <!-- Fecha -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha actual"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Agregar Productos -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Agregar Productos"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinnerProductos"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_marginEnd="8dp" />
+
+                    <EditText
+                        android:id="@+id/etCantidad"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Cant"
+                        android:inputType="number" />
+
+                    <Button
+                        android:id="@+id/btnAgregarProducto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+"
+                        android:layout_marginStart="8dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <!-- Lista de Productos Agregados -->
         <TextView
@@ -83,15 +100,23 @@
             android:layout_height="wrap_content"
             android:text="Productos en la Orden"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProductosOrden"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            tools:listitem="@layout/item_producto_orden" />
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            android:padding="8dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProductosOrden"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                tools:listitem="@layout/item_producto" />
+
+        </androidx.cardview.widget.CardView>
 
         <!-- Total -->
         <TextView
@@ -102,14 +127,15 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginTop="16dp"
-            android:gravity="end"/>
+            android:gravity="end" />
 
+        <!-- Botón Guardar -->
         <Button
             android:id="@+id/btnGuardarOrden"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Guardar Orden"/>
+            android:text="Guardar Orden"
+            android:layout_marginTop="16dp" />
 
     </LinearLayout>
 </ScrollView>
